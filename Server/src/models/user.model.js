@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
     lastname: {
         type: String
     },
-    email:{
+    email: {
         type: String,
         required: true,
         unique: true
@@ -32,9 +32,19 @@ const userSchema = mongoose.Schema({
     },
     pincode: {
         type: String
+    },
+    profileId: {
+        type: String,
+    },
+    role: {
+        type: String,
+        enum: ["student", "mentor"],
+        default: "student"
     }
 }, {
     timestamps: true
 });
+
+userSchema.virtual("name").get(() => (`${this.firstname} ${this.lastname}`));
 
 exports.User = new mongoose.model("users", userSchema);

@@ -1,22 +1,20 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Toaster } from "react-hot-toast";
+import Layout from "./components/Layout";
+import Dashboard from "./pages/Dashboard";
+import Students from "./pages/Students";
 
-import Students from './pages/Students';
-import Dashboard from './pages/Dashboard';
-import Layout from './components/Layout';
-
+import{ Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    
-    <BrowserRouter>
-      <Layout />
+    <Layout>
       <Routes>
-        <Route path='/' element={<Dashboard />}></Route>
-        <Route path='/students' element={<Students />} />
+        <Route path="/" element={<Dashboard/>} />
+        <Route path="/students" element={<Students/>} />
       </Routes>
-      
-    </BrowserRouter>
-  )
+      <Toaster/>
+    </Layout>
+  );
 }
 
-export default App
+export default App;
